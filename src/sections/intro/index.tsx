@@ -18,7 +18,7 @@ const IntroSection: FC = () => {
         <>
             <div className="h-svh flex flex-col">
                 <Header />
-                <div className='flex px-8 md:px-16 h-full gap-8 flex-row items-center justify-between'>
+                <div className='flex flex-col px-8 mt-8 h-full gap-12 items-center md:mt-0 md:justify-between md:flex-row md:px-16 md:gap-8'>
                     <div className='flex gap-8 flex-col max-w-md'>
                         <div className='flex gap-4 flex-col'>
                             <Carousel
@@ -59,9 +59,8 @@ const IntroSection: FC = () => {
                             <Button variant='outline'>Projects</Button>
                         </div>
                     </div>
-
                     <div>
-                        <img src={me} className='hidden md:block md:h-[32rem] me'></img>
+                        <img src={me} className='h-[24rem] me'></img>
                     </div>
                 </div>
             </div>
