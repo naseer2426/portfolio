@@ -9,6 +9,7 @@ import {
     CarouselItem,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
+import config from '@/config/config.json'
 
 const IntroSection: FC = () => {
     const onLinkedinClick = () => {
@@ -41,6 +42,7 @@ const IntroSection: FC = () => {
 }
 
 const SkillCaraoursel: FC = () => {
+    const skills = config.skills
     return (
         <Carousel
             opts={{
@@ -55,21 +57,11 @@ const SkillCaraoursel: FC = () => {
             orientation='vertical'
         >
             <CarouselContent className='max-h-[3rem]'>
-                <CarouselItem>
-                    <h2 className='text-accent role'>Backend Engineer</h2>
-                </CarouselItem>
-                <CarouselItem>
-                    <h2 className='text-accent role'>Frontend Engineer</h2>
-                </CarouselItem>
-                <CarouselItem>
-                    <h2 className='text-accent role'>Rubik's Cube Enthusiast</h2>
-                </CarouselItem>
-                <CarouselItem>
-                    <h2 className='text-accent role'>Physics Lover</h2>
-                </CarouselItem>
-                <CarouselItem>
-                    <h2 className='text-accent role'>Singer</h2>
-                </CarouselItem>
+                {skills.map((skill, index) => (
+                    <CarouselItem key={index}>
+                        <h2 className='text-accent skill'>{skill}</h2>
+                    </CarouselItem>
+                ))}
             </CarouselContent>
         </Carousel>
     )
