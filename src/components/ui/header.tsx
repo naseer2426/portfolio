@@ -5,7 +5,7 @@ const Header: FC = () => {
     return (
         <>
             <div className="px-8 py-4 flex justify-end">
-                <img src={sing} alt="Signature" className='h-8' />
+                <img src={sing} alt="Signature" className='h-6 md:h-8' />
             </div>
         </>
 

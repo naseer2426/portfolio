@@ -52,7 +52,7 @@ export default {
   			}
   		},
 		fontFamily:{
-			greeting: ["Playfair Display"]
+			playfair: ["Playfair Display"],
 		}
   	}
   },
