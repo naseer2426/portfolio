@@ -1,5 +1,6 @@
 import { IntroSection } from "./sections/intro"
 import { ProjectsSection } from "./sections/projects"
+import { Toaster } from "@/components/ui/sonner"
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <IntroSection />
       <ProjectsSection />
+      <Toaster />
     </>
   )
 }

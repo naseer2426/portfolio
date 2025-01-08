@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:opsz,wght@5..1200,300..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 @layer base {
   :root {
     --background: 265 63% 7%;
@@ -38,6 +42,4 @@
   }
 }
 
-@layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-}
+
