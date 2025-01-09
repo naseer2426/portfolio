@@ -3,7 +3,9 @@ import * as emoji from 'node-emoji'
 
 const USERNAME = 'naseer2426';
 const PORTFOLIO_READY_TOPIC = 'portfolio-ready';
-const octokit = new Octokit({});
+const octokit = new Octokit({
+    auth: import.meta.env.VITE_GITHUB_TOKEN,
+});
 
 export type GithubProject = {
     title: string;
@@ -39,7 +41,7 @@ export async function listPortfolioReadyProjects():Promise<ListProjectsResp> {
 
         projects.push({
             title: emoji.emojify(repo.name),
-            description: emoji.emojify(repo.description as string),
+            description: emoji.emojify(repo.description? repo.description : ""),
             projectLink: repo.homepage,
             githubLink: repo.html_url,
             tags: tags,
@@ -69,7 +71,7 @@ export async function getRepositoryReadmeImages(owner: string, repo: string, def
     return imageUrls;
 }
 
-function getFullImageUrl(owner: string, repo: string, path: string, defaultBranch: string) {
+function getFullImageUrl(owner: string, repo: string, path: string, defaultBranch: string):string {
     if (path.startsWith("http")) {
         return path;
     }
