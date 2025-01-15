@@ -16,7 +16,6 @@ const ProjectsSection: FC = () => {
             toast("Failed to fetch projects", {
                 description: error,
             })
-            setLoading(false)
             return
         }
         setProjects(data || [])
