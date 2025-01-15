@@ -16,7 +16,7 @@ export type ListProjectsResp = {
 
 export async function listPortfolioReadyProjects():Promise<ListProjectsResp> {
   try {
-    const resp = await axios.get<ListProjectsResp>(import.meta.env.VITE_BACKEND_URL as string);
+    const resp = await axios.get<ListProjectsResp>(`${import.meta.env.VITE_BACKEND_URL}/projects/cache` as string);
     return resp.data;
   } catch (error:any) {
     return { error: error.message };
