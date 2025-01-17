@@ -57,11 +57,11 @@ const Project: FC<ProjectProps> = (props: ProjectProps) => {
             </div>
             <div className={"bg-muted p-8" + (props.loading ? " hidden" : "")}>
                 <div className="flex flex-col gap-8 max-w-[70vw] sm:max-w-md">
-                    <h1 className="text-2xl font-semibold font-playfair">{props.title}</h1>
-                    <p className="text-[#D1D5DB] font-playfair">{props.description}</p>
+                    <h1 className="text-2xl font-semibold font-nunito">{props.title}</h1>
+                    <p className="text-[#D1D5DB] font-nunito">{props.description}</p>
                     <div className="flex flex-row gap-2 flex-wrap">
                         {props.tags?.map((tag, index) => (
-                            <div key={index} className="bg-[#374151] text-[#D1D5DB] font-playfair p-2 rounded-3xl w-fit">{tag}</div>
+                            <div key={index} className="bg-[#374151] text-[#D1D5DB] font-nunito p-2 rounded-3xl w-fit">{tag}</div>
                         ))}
                     </div>
                     <div className="flex flex-row gap-8 flex-wrap">

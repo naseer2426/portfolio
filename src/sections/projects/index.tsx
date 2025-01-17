@@ -16,6 +16,7 @@ const ProjectsSection: FC = () => {
             toast("Failed to fetch projects", {
                 description: error,
             })
+            setLoading(false)
             return
         }
         setProjects(data || [])
@@ -27,7 +28,7 @@ const ProjectsSection: FC = () => {
     return (
         <>
             <div className="p-8 flex flex-col justify-center items-center gap-8 md:gap-16">
-                <h1 className="text-4xl font-playfair font-extrabold">Projects</h1>
+                <h1 className="text-4xl font-nunito font-extrabold">Projects</h1>
                 {!loading && projects.map((project, idx) => (
                     <Project
                         key={idx}

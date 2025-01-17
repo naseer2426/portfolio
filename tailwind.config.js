@@ -52,7 +52,8 @@ export default {
   			}
   		},
 		fontFamily:{
-			playfair: ["Playfair Display"],
+			playfair: ["'Playfair Display'", 'serif'],
+        	nunito: ["'Nunito'", 'sans-serif'],
 		}
   	}
   },
