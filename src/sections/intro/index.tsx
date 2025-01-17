@@ -15,6 +15,9 @@ const IntroSection: FC = () => {
     const onLinkedinClick = () => {
         window.open('https://www.linkedin.com/in/naseer-ahmed-khan-ntu/', '_blank')
     }
+    const onGithubClick = () => {
+        window.open('https://www.github.com/naseer2426', '_blank')
+    }
     const intro = config.intro
     return (
         <>
@@ -29,7 +32,7 @@ const IntroSection: FC = () => {
                         <p className='lg:text-xl'>{intro}</p>
                         <div className='flex flex-row gap-4'>
                             <Button variant='default' onClick={onLinkedinClick}>Linkedin</Button>
-                            <Button variant='outline'>Projects</Button>
+                            <Button variant='outline' onClick={onGithubClick}>Github</Button>
                         </div>
                     </div>
                     <div className='w-56 mb-8 md:size-64 lg:size-96'>
