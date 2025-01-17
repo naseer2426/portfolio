@@ -1,3 +1,22 @@
 .skill {
     filter: drop-shadow(0 0 0.5em #FFF570);
 }
+.custom-shape-divider-bottom-1737134801 {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1737134801 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+}
+
+.custom-shape-divider-bottom-1737134801 .shape-fill {
+    fill: hsl(var(--background));
+}
