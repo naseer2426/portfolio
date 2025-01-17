@@ -40,14 +40,14 @@ const Project: FC<ProjectProps> = (props: ProjectProps) => {
                                 <div className="h-full flex justify-center items-center">
                                     <Image
                                         src={imgUrl}
-                                        className="sm:max-w-md rounded-3xl"
+                                        className="sm:max-w-md rounded-2xl"
                                     />
                                 </div>
                             </CarouselItem>
                         ))}
                         {props.loading && <CarouselItem>
                             <div>
-                                <Skeleton className="h-[25vh] w-[50vw] md:w-[40vw] lg:w-[30vw] rounded-3xl" />
+                                <Skeleton className="h-[25vh] w-[50vw] md:w-[40vw] lg:w-[30vw] rounded-2xl" />
                             </div>
                         </CarouselItem>}
                     </CarouselContent>
