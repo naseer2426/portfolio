@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import {
     Carousel,
     CarouselContent,
@@ -6,9 +6,20 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import { fetchPlaylistVideos, getYouTubeEmbedUrl } from '@/api/youtube'
 import './music.css'
 
 export const MusicSection: FC = () => {
+    const [videoIds, setVideoIds] = useState<string[]>([])
+
+    useEffect(() => {
+        const loadVideos = async () => {
+            const ids = await fetchPlaylistVideos()
+            setVideoIds(ids)
+        }
+        loadVideos()
+    }, [])
+
     return (
         <>
             <div className="bg-gradient-to-b from-indigo-950 to-trasnsparent relative p-8 flex flex-col justify-center items-center gap-8 md:gap-16">
@@ -20,10 +31,16 @@ export const MusicSection: FC = () => {
                 <h1 className="text-4xl font-nunito font-extrabold md:mt-4">Music</h1>
                 <Carousel className="w-[70vw] md:w-[60vw] lg:w-[50vw]">
                     <CarouselContent>
-                        {Array.from({ length: 5 }).map((_, index) => (
-                            <CarouselItem key={index}>
+                        {videoIds.map((videoId, index) => (
+                            <CarouselItem key={videoId}>
                                 <div className="p-1">
-                                    <iframe src="https://www.youtube.com/embed/yPNa--zlLXI" className='aspect-video w-full h-full' />
+                                    <iframe
+                                        src={getYouTubeEmbedUrl(videoId)}
+                                        className='aspect-video w-full h-full'
+                                        title={`YouTube video ${index + 1}`}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    />
                                 </div>
                             </CarouselItem>
                         ))}
