@@ -18,5 +18,5 @@
 }
 
 .custom-shape-divider-bottom-1737134801 .shape-fill {
-    fill: hsl(var(--background));
+    fill: var(--background);
 }

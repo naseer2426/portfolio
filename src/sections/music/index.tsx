@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from 'react'
+
+import { FC } from 'react'
 import {
     Carousel,
     CarouselContent,
@@ -6,19 +7,13 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { fetchPlaylistVideos, getYouTubeEmbedUrl } from '@/api/youtube'
 import './music.css'
 
-export const MusicSection: FC = () => {
-    const [videoIds, setVideoIds] = useState<string[]>([])
 
-    useEffect(() => {
-        const loadVideos = async () => {
-            const ids = await fetchPlaylistVideos()
-            setVideoIds(ids)
-        }
-        loadVideos()
-    }, [])
+export type MusicSectionProps = {
+    videoIds: string[]
+}
+const MusicSection: FC<MusicSectionProps> = (props: MusicSectionProps) => {
 
     return (
         <>
@@ -31,7 +26,7 @@ export const MusicSection: FC = () => {
                 <h1 className="text-4xl font-nunito font-extrabold md:mt-4">Music</h1>
                 <Carousel className="w-[70vw] md:w-[60vw] lg:w-[50vw]">
                     <CarouselContent>
-                        {videoIds.map((videoId, index) => (
+                        {props.videoIds.map((videoId, index) => (
                             <CarouselItem key={videoId}>
                                 <div className="p-1">
                                     <iframe
@@ -51,4 +46,12 @@ export const MusicSection: FC = () => {
             </div>
         </>
     )
+}
+
+function getYouTubeEmbedUrl(videoId: string): string {
+    return `https://www.youtube.com/embed/${videoId}`;
+}
+
+export {
+    MusicSection
 }

@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import sing from '../../assets/signature.png'
+import Image from 'next/image';
+import signature from '../../../public/signature.png'
 
 const Header: FC = () => {
     return (
         <>
             <div className="px-8 py-4 flex justify-end">
-                <img src={sing} alt="Signature" className='h-6 md:h-8' />
+                <Image src={signature} alt="Signature" width={100} height={100} />
             </div>
         </>
 
