@@ -1,6 +1,6 @@
 // Configuration constants
 export const YOUTUBE_PLAYLIST_ID = 'PLBNUP7DvK1GCabnNvIoxJoP7BFtPzJpsp'
-export const YOUTUBE_API_KEY = import.meta.env.VITE_YT_API_KEY
+export const YOUTUBE_API_KEY = process.env.YT_API_KEY
 // Types for YouTube API responses
 interface YouTubePlaylistItem {
     snippet: {
@@ -27,6 +27,7 @@ interface YouTubePlaylistResponse {
  * @returns Array of video IDs that can be used with YouTube embed
  */
 export async function fetchPlaylistVideos(): Promise<string[]> {
+    
     try {
         const response = await fetch(
             `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${YOUTUBE_PLAYLIST_ID}&key=${YOUTUBE_API_KEY}`

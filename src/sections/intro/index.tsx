@@ -1,6 +1,7 @@
+"use client"
+
 import './intro.css'
 import { FC } from 'react';
-import me from '../../assets/Me.png'
 import { Header } from '@/components/ui/header';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,14 +11,11 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import config from '@/config/config.json'
+import Image from "next/image";
+import me from '../../../public/me.png'
+import Link from 'next/link'
 
 const IntroSection: FC = () => {
-    const onLinkedinClick = () => {
-        window.open('https://www.linkedin.com/in/naseer-ahmed-khan-ntu/', '_blank')
-    }
-    const onGithubClick = () => {
-        window.open('https://www.github.com/naseer2426', '_blank')
-    }
     const intro = config.intro
     return (
         <>
@@ -27,16 +25,20 @@ const IntroSection: FC = () => {
                     <div className='flex gap-8 flex-col md:max-w-md lg:max-w-lg'>
                         <div className='flex gap-4 flex-col'>
                             <SkillCaraoursel />
-                            <h1 className='text-4xl md:text-5xl lg:text-7xl lg:min-w-max font-extrabold font-playfair name'>Hey! My name is<br />Naseer Ahmed Khan</h1>
+                            <h1 className='text-4xl md:text-5xl lg:text-7xl lg:min-w-max font-extrabold font-[family-name:var(--font-playfair)] name'>Hey! My name is<br />Naseer Ahmed Khan</h1>
                         </div>
                         <p className='lg:text-xl'>{intro}</p>
                         <div className='flex flex-row gap-4'>
-                            <Button variant='default' onClick={onLinkedinClick}>Linkedin</Button>
-                            <Button variant='outline' onClick={onGithubClick}>Github</Button>
+                            <Link href='https://www.linkedin.com/in/naseer-ahmed-khan-ntu/' target='_blank'>
+                                <Button variant='default'>Linkedin</Button>
+                            </Link>
+                            <Link href='https://www.github.com/naseer2426' target='_blank'>
+                                <Button variant='outline'>Github</Button>
+                            </Link>
                         </div>
                     </div>
                     <div className='w-56 mb-8 md:size-64 lg:size-96'>
-                        <img src={me} className='me'></img>
+                        <Image src={me} alt="Me" className='me' />
                     </div>
                 </div>
                 <div className="custom-shape-divider-bottom-1737134801">

@@ -1,35 +1,33 @@
-import { FC, useEffect, useState } from "react";
-import { listPortfolioReadyProjects } from "@/api/github";
-import { GithubProject } from "@/api/github";
-import { toast } from "sonner"
+'use client'
+
+import { FC } from "react";
 import { Project } from "@/components/ui/project";
 
-const LOADING_PROJECTS = 3
 
-const ProjectsSection: FC = () => {
-    const [projects, setProjects] = useState<GithubProject[]>([])
-    const [loading, setLoading] = useState(true)
+export type GithubProject = {
+    title: string;
+    description: string | null;
+    images?: string[];
+    projectLink: string | null;
+    githubLink: string;
+    tags?: string[];
+}
 
-    const fetchProjects = async () => {
-        const { data, error } = await listPortfolioReadyProjects()
-        if (error) {
-            toast("Failed to fetch projects", {
-                description: error,
-            })
-            setLoading(false)
-            return
-        }
-        setProjects(data || [])
-        setLoading(false)
-    }
-    useEffect(() => {
-        fetchProjects()
-    }, [])
+export type ListProjectsResp = {
+    data?: GithubProject[];
+    error?: string;
+}
+
+export type ProjectsSectionProps = {
+    projects: GithubProject[]
+}
+const ProjectsSection: FC<ProjectsSectionProps> = (props) => {
+
     return (
         <>
             <div className="p-8 flex flex-col justify-center items-center gap-8 md:gap-16">
-                <h1 className="text-4xl font-nunito font-extrabold">Projects</h1>
-                {!loading && projects.map((project, idx) => (
+                <h1 className="text-4xl font-[family-name:var(--font-nunito)] font-bold">Projects</h1>
+                {props.projects.map((project, idx) => (
                     <Project
                         key={idx}
                         title={project.title}
@@ -39,18 +37,6 @@ const ProjectsSection: FC = () => {
                         githubLink={project.githubLink}
                         tags={project.tags}
                         imageFirst={idx % 2 === 0}
-                    />
-                ))}
-                {loading && Array.from({ length: LOADING_PROJECTS }).map((_, idx) => (
-                    <Project
-                        key={idx}
-                        title=""
-                        description=""
-                        images={[]}
-                        projectLink=""
-                        githubLink=""
-                        imageFirst={idx % 2 === 0}
-                        loading
                     />
                 ))}
             </div>
