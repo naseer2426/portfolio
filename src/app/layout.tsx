@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Playfair, Nunito } from "next/font/google";
+import { Playfair_Display, Nunito } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair({
-  weight: ["500", "600", "900"],
+const playfair = Playfair_Display({
+  weight: ["500", "600", "700"],
   variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
