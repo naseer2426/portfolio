@@ -49,7 +49,7 @@ type HomeData = {
   videoIds: string[]
 }
 
-export async function fetchHomeData(): Promise<HomeData> {
+async function fetchHomeData(): Promise<HomeData> {
   const projects = await listPortfolioReadyProjects()
   const videoIds = await fetchPlaylistVideos()
   return {
