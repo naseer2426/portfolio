@@ -5,6 +5,7 @@ import "./globals.css";
 const playfair = Playfair({
   weight: ["500", "600", "900"],
   variable: "--font-playfair",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -12,6 +13,7 @@ const nunito = Nunito({
   weight: ["500", "700"],
   variable: "--font-nunito",
   display: "swap",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
