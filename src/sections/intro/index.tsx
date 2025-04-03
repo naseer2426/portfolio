@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import './intro.css'
 import { FC } from 'react';
@@ -13,14 +13,9 @@ import Autoplay from "embla-carousel-autoplay"
 import config from '@/config/config.json'
 import Image from "next/image";
 import me from '../../../public/me.png'
+import Link from 'next/link'
 
 const IntroSection: FC = () => {
-    const onLinkedinClick = () => {
-        window.open('https://www.linkedin.com/in/naseer-ahmed-khan-ntu/', '_blank')
-    }
-    const onGithubClick = () => {
-        window.open('https://www.github.com/naseer2426', '_blank')
-    }
     const intro = config.intro
     return (
         <>
@@ -34,8 +29,12 @@ const IntroSection: FC = () => {
                         </div>
                         <p className='lg:text-xl'>{intro}</p>
                         <div className='flex flex-row gap-4'>
-                            <Button variant='default' onClick={onLinkedinClick}>Linkedin</Button>
-                            <Button variant='outline' onClick={onGithubClick}>Github</Button>
+                            <Link href='https://www.linkedin.com/in/naseer-ahmed-khan-ntu/' target='_blank'>
+                                <Button variant='default'>Linkedin</Button>
+                            </Link>
+                            <Link href='https://www.github.com/naseer2426' target='_blank'>
+                                <Button variant='outline'>Github</Button>
+                            </Link>
                         </div>
                     </div>
                     <div className='w-56 mb-8 md:size-64 lg:size-96'>
