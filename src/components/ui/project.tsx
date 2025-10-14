@@ -68,7 +68,7 @@ const Project: FC<ProjectProps> = (props: ProjectProps) => {
                         {props.tags?.map((tag, index) => (
                             <div
                                 key={index}
-                                className="bg-[#374151]/80 backdrop-blur-sm text-[#D1D5DB] font-nunito p-2 rounded-3xl w-fit border border-primary/20 hover:border-primary/40 hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-default"
+                                className="w-fit rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 px-3 py-1 text-foreground/80 hover:border-primary/40 hover:bg-gradient-to-r hover:from-primary/30 hover:to-accent/30 hover:scale-105 transition-all duration-300 cursor-default"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 {tag}

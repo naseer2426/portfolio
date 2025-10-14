@@ -24,10 +24,10 @@ const IntroSection: FC = () => {
             <div className="relative h-max md:h-svh flex flex-col bg-gradient-to-t from-indigo-950 to-trasnsparent">
                 <Header />
                 <div className='flex flex-col p-8 h-full gap-12 items-center md:mt-0 md:justify-between md:flex-row md:px-16 md:pb-32'>
-                    <div className='flex gap-8 flex-col md:max-w-md lg:max-w-lg'>
+                    <div className='flex gap-4 md:gap-8 flex-col md:max-w-md lg:max-w-lg'>
                         <div className='flex gap-4 flex-col'>
                             <SkillCaraoursel />
-                            <h1 className='text-4xl md:text-5xl lg:text-7xl lg:min-w-max font-extrabold tracking-tight name'>
+                            <h1 className='text-3xl md:text-5xl lg:text-7xl lg:min-w-max font-extrabold tracking-tight name'>
                                 Hey! My name is
                                 <br />
                                 <span className='bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent'>Naseer Ahmed Khan</span>
@@ -93,7 +93,11 @@ const SkillCaraoursel: FC = () => {
             <CarouselContent className='max-h-[3rem]'>
                 {skills.map((skill, index) => (
                     <CarouselItem key={index}>
-                        <h2 className='font-mono text-accent '>{skill}</h2>
+                        <div className="flex h-12">
+                            <h2 className='font-mono text-sm md:text-base bg-clip-text text-muted-foreground'>
+                                {skill}
+                            </h2>
+                        </div>
                     </CarouselItem>
                 ))}
             </CarouselContent>
