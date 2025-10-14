@@ -14,6 +14,8 @@ import config from '@/config/config.json'
 import Image from "next/image";
 import me from '../../../public/me.png'
 import Link from 'next/link'
+import github from '../../../public/github.svg'
+import externalLink from '../../../public/external-link.svg'
 
 const IntroSection: FC = () => {
     const intro = config.intro
@@ -25,15 +27,34 @@ const IntroSection: FC = () => {
                     <div className='flex gap-8 flex-col md:max-w-md lg:max-w-lg'>
                         <div className='flex gap-4 flex-col'>
                             <SkillCaraoursel />
-                            <h1 className='text-4xl md:text-5xl lg:text-7xl lg:min-w-max font-extrabold font-[family-name:var(--font-playfair)] name'>Hey! My name is<br />Naseer Ahmed Khan</h1>
+                            <h1 className='text-4xl md:text-5xl lg:text-7xl lg:min-w-max font-extrabold tracking-tight name'>
+                                Hey! My name is
+                                <br />
+                                <span className='bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent'>Naseer Ahmed Khan</span>
+                            </h1>
                         </div>
-                        <p className='lg:text-xl'>{intro}</p>
+                        <div className='w-fit rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 px-3 py-1 text-xs font-mono text-foreground/80'>
+                            Building for the web
+                        </div>
+                        <p className='lg:text-xl leading-relaxed text-muted-foreground'>
+                            {intro}
+                        </p>
                         <div className='flex flex-row gap-4'>
-                            <Link href='https://www.linkedin.com/in/naseer-ahmed-khan-ntu/' target='_blank'>
-                                <Button variant='default'>Linkedin</Button>
+                            <Link href='https://www.github.com/naseer2426' target='_blank' aria-label='Open GitHub profile in new tab'>
+                                <Button
+                                    variant='default'
+                                    className='group gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/40 text-primary-foreground font-mono bg-gradient-to-r from-primary/20 to-accent/20'>
+                                    <Image src={github} alt='github' className='size-4 opacity-80 group-hover:opacity-100 transition-opacity' />
+                                    <span>Open GitHub</span>
+                                </Button>
                             </Link>
-                            <Link href='https://www.github.com/naseer2426' target='_blank'>
-                                <Button variant='outline'>Github</Button>
+                            <Link href='https://www.linkedin.com/in/naseer-ahmed-khan-ntu/' target='_blank' aria-label='Open LinkedIn profile in new tab'>
+                                <Button
+                                    variant='outline'
+                                    className='group gap-2 border-primary/40 text-foreground hover:bg-primary/10 hover:text-foreground font-mono'>
+                                    <Image src={externalLink} alt='external-link' className='size-4 opacity-80 group-hover:opacity-100 transition-opacity' />
+                                    <span>Connect</span>
+                                </Button>
                             </Link>
                         </div>
                     </div>
@@ -72,7 +93,7 @@ const SkillCaraoursel: FC = () => {
             <CarouselContent className='max-h-[3rem]'>
                 {skills.map((skill, index) => (
                     <CarouselItem key={index}>
-                        <h2 className='text-accent skill'>{skill}</h2>
+                        <h2 className='font-mono text-accent '>{skill}</h2>
                     </CarouselItem>
                 ))}
             </CarouselContent>
