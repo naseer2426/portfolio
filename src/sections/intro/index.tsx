@@ -27,7 +27,7 @@ const IntroSection: FC = () => {
                     <div className='flex gap-4 md:gap-8 flex-col md:max-w-md lg:max-w-lg'>
                         <div className='flex gap-4 flex-col'>
                             <SkillCaraoursel />
-                            <h1 className='text-3xl md:text-5xl lg:text-7xl lg:min-w-max font-extrabold tracking-tight name'>
+                            <h1 className='text-[35px] md:text-5xl lg:text-7xl lg:min-w-max font-extrabold tracking-tight name'>
                                 Hey! My name is
                                 <br />
                                 <span className='bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent'>Naseer Ahmed Khan</span>
