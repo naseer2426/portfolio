@@ -16,6 +16,7 @@ import me from '../../../public/me.png'
 import Link from 'next/link'
 import github from '../../../public/github.svg'
 import externalLink from '../../../public/external-link.svg'
+import blog from '../../../public/blog.svg'
 
 const IntroSection: FC = () => {
     const intro = config.intro
@@ -33,9 +34,6 @@ const IntroSection: FC = () => {
                                 <span className='bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent'>Naseer Ahmed Khan</span>
                             </h1>
                         </div>
-                        <div className='w-fit rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 px-3 py-1 text-xs font-mono text-foreground/80'>
-                            Building for the web
-                        </div>
                         <p className='lg:text-xl leading-relaxed text-muted-foreground'>
                             {intro}
                         </p>
@@ -45,13 +43,21 @@ const IntroSection: FC = () => {
                                     variant='default'
                                     className='group gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/40 text-primary-foreground font-mono bg-gradient-to-r from-primary/20 to-accent/20'>
                                     <Image src={github} alt='github' className='size-4 opacity-80 group-hover:opacity-100 transition-opacity' />
-                                    <span>Open GitHub</span>
+                                    <span>GitHub</span>
+                                </Button>
+                            </Link>
+                            <Link href='/blog' aria-label='View blog posts'>
+                                <Button
+                                    variant='outline'
+                                    className='group gap-2 border-primary/40 text-foreground hover:bg-primary/10 hover:text-foreground font-mono bg-gradient-to-r from-primary/20 to-accent/20'>
+                                    <Image src={blog} alt='blog' className='size-4 opacity-80 group-hover:opacity-100 transition-opacity' />
+                                    <span>Blog</span>
                                 </Button>
                             </Link>
                             <Link href='https://www.linkedin.com/in/naseer-ahmed-khan-ntu/' target='_blank' aria-label='Open LinkedIn profile in new tab'>
                                 <Button
                                     variant='outline'
-                                    className='group gap-2 border-primary/40 text-foreground hover:bg-primary/10 hover:text-foreground font-mono'>
+                                    className='group gap-2 border-primary/40 text-foreground hover:bg-primary/10 hover:text-foreground font-mono bg-gradient-to-r from-primary/20 to-accent/20'>
                                     <Image src={externalLink} alt='external-link' className='size-4 opacity-80 group-hover:opacity-100 transition-opacity' />
                                     <span>Connect</span>
                                 </Button>
