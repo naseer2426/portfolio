@@ -1,14 +1,13 @@
 import { notFound } from 'next/navigation';
 import { getAllPostSlugs, getPostBySlug } from '@/lib/blog';
-import { MDXComponents } from '@/components/mdx/MDXComponents';
+import { format } from 'date-fns';
 
 export async function generateStaticParams() {
     return getAllPostSlugs().map((slug) => ({ slug }));
 }
 
-type Params = { params: { slug: string } };
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata({ params }: any) {
     const { slug } = await params
     const post = await getPostBySlug(slug);
     if (!post) return {};
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: Params) {
     };
 }
 
-export default async function BlogPostPage({ params }: Params) {
+export default async function BlogPostPage({ params }: any) {
     const { slug } = await params
     const post = await getPostBySlug(slug);
     if (!post) {
@@ -33,18 +32,25 @@ export default async function BlogPostPage({ params }: Params) {
     const { content, frontmatter } = post;
 
     return (
-        <article className="px-8 py-10 max-w-5xl mx-auto">
+        <article className="px-4 py-6 lg:px-10 max-w-5xl mx-auto">
             <header>
-                <time className="mt-1 block text-sm text-muted-foreground">
-                    {new Date(frontmatter.date).toLocaleDateString()}
-                </time>
-                <h1 className="text-5xl font-bold tracking-tight text-foreground">{frontmatter.title}</h1>
-            </header>
-            <div className="mt-2 h-px w-full bg-gradient-to-r from-accent to-primary" />
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
+                    {frontmatter.title}
+                </h1>
+                <div className="my-2 h-px w-full bg-gradient-to-r from-accent to-primary" />
+                <div className="flex justify-between">
+                    <p className='text-xs md:text-sm text-muted-foreground'>{"Naseer Ahmed Khan"}</p>
+                    <time className="block text-xs md:text-sm text-muted-foreground">
+                        {format(new Date(frontmatter.date), "do MMM yyyy")}
+                    </time>
+                </div>
 
-            <div className="prose prose-invert mt-8 max-w-none">
+            </header>
+
+            <div className="prose prose-invert mt-6 sm:mt-8 max-w-none prose-sm sm:prose-base">
                 {content}
             </div>
         </article>
     );
 }
+

@@ -1,0 +1,27 @@
+---
+title: "I pay 50 cents for ChatGPT Pro"
+date: "2025-10-22"
+description: "A blog describing my journey of setting up my own chatGPT like UI"
+tags: ["AI","LibreChat", "Self Hosting"]
+cover: "https://res.cloudinary.com/deiuynufh/image/upload/v1761147914/florian-krumm-yLDabpoCL3s-unsplash_dugxi4.jpg"
+---
+
+As a backend dev, I've always hated paying fixed subscription fees for tools I only use occasionally. ChatGPT Pro costs 20 USD/month no matter how much you use it. But LLMs don't really need to work that way - they're built on tokens, not time. So I decided to setup a ChatGPT clone which bills me for the tokens I use.
+
+<Video
+    src={"https://res.cloudinary.com/deiuynufh/video/upload/v1761144143/Demo_k6v96m.mov"}
+    playsInline={true}
+/>
+
+Here's how I did it: 
+- For frontend, I am using [LibreChat](https://www.librechat.ai/) - an open source chat UI which supports MCP servers, web search & RAG, which pretty much covers everything I use AI for.
+- For backend, although OpenAI's API would be an obvious choice, I wanted something that could give me access to *all* AI models. After some searching I found [OpenRouter](https://openrouter.ai/) - a service that provides every AI model through a pay per token API fully compatible with OpenAI's API design, meaning any tool designed to work with OpenAI's v1 API would most definitely be compatible with OpenRouter
+
+Once all my pieces were ready, I needed fit them together and host it so I can access it from anywhere in the world. Instead of paying for cloud services like GCP or AWS I decided to setup my own home server, for free ✨. Abhinav, Shiv and I had built a pretty strong PC in NTU, which was now sitting idly under my desk. So I spent a weekend tinkering with Coolify to setup a home server with full push to deploy support, SSL certificate management, health check alerts & log drains. I even setup Prometheus & Grafana to monitor every aspect of my home server from CPU usage to I/O. Are you even passionate about your side project if you don't go down an over engineering side track?
+
+Anyways, now that I had a fully functioning ChatGPT clone with access to over 500 models, how do I decide which one is the most cost efficient? 
+If model A is 2x smarter than model B, but costs 10x more, it is simply more efficient for me to use model B. Also while it is generally true that “smarter” models have a higher cost per token, the rising popularity of reasoning models makes the concept of cost per token somewhat irrelevant. Simply put a model (with low cost per token) that yaps more would cost me more than a model (with high cost per token) that doesn't yap. Additionally, I would love to choose a model with a decently high token/second.
+
+The folks over at artificial analysis have posted some incredible benchmarks which answer all my questions. According to their results I'd be getting the best “smartness” per “dollar” using **GPT OSS 120B** (as of the time of this post), which is the default model on my platform. Of course as new frontier models come out “the most efficient model” would keep changing, so my setup allows me to change my default model with a simple 1 line change.
+
+Now, I pay roughly **$0.50 a month** for pretty much the same quality I used to get from ChatGPT for $20 a month.

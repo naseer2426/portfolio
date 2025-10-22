@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
+import ReactPlayer from 'react-player'
 
 // Tailwind-like classes aligned with globals colors
 const heading = 'font-bold tracking-tight text-foreground';
@@ -9,7 +10,7 @@ const link = 'text-accent underline-offset-4 hover:underline';
 const codeInline = 'rounded bg-secondary px-1.5 py-0.5 text-foreground';
 const pre = 'overflow-x-auto rounded-md bg-secondary p-4 text-foreground';
 const blockquote = 'mt-6 border-l-4 border-primary/50 pl-6 italic text-foreground/80';
-const list = 'my-4 ml-6 list-disc marker:text-accent';
+const list = 'my-4 ml-2 md:ml-6 list-disc marker:text-accent';
 
 export const MDXComponents = {
     h1: (props: any) => <h1 className={`mt-2 scroll-m-20 text-4xl ${heading}`} {...props} />,
@@ -18,7 +19,7 @@ export const MDXComponents = {
     h4: (props: any) => <h4 className={`mt-8 scroll-m-20 text-xl ${heading}`} {...props} />,
     p: (props: any) => <p className={`mt-6 ${paragraph}`} {...props} />,
     a: ({ href = '#', children, ...rest }: { href?: string; children: ReactNode }) => (
-        <Link href={href} className={link} {...rest as any}>
+        <Link href={href} className={link} {...rest as any} target="_blank">
             {children}
         </Link>
     ),
@@ -34,6 +35,15 @@ export const MDXComponents = {
         <img loading="lazy" alt="" className="rounded-md border border-border" {...props} />
     ),
     Image: (props: any) => <Image {...props} className="rounded-md " />,
+    Video: (props: any) => <ReactPlayer
+        url={props.src}
+        controls={true}
+        playing={true}
+        width="100%"
+        height="auto"
+        className="rounded-md"
+        {...props}
+    />
 };
 
 export type MDXComponentsType = typeof MDXComponents;
