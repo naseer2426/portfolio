@@ -2,6 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import ReactPlayer from 'react-player'
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
 
 // Tailwind-like classes aligned with globals colors
 const heading = 'font-bold tracking-tight text-foreground';
@@ -13,10 +20,10 @@ const blockquote = 'mt-6 border-l-4 border-primary/50 pl-6 italic text-foregroun
 const list = 'my-4 ml-2 md:ml-6 list-disc marker:text-accent';
 
 export const MDXComponents = {
-    h1: (props: any) => <h1 className={`mt-2 scroll-m-20 text-4xl ${heading}`} {...props} />,
-    h2: (props: any) => <h2 className={`mt-10 scroll-m-20 text-3xl ${heading}`} {...props} />,
-    h3: (props: any) => <h3 className={`mt-8 scroll-m-20 text-2xl ${heading}`} {...props} />,
-    h4: (props: any) => <h4 className={`mt-8 scroll-m-20 text-xl ${heading}`} {...props} />,
+    h1: (props: any) => <h1 className={`mt-2 scroll-m-20 text-2xl ${heading}`} {...props} />,
+    h2: (props: any) => <h2 className={`mt-10 scroll-m-20 text-xl ${heading}`} {...props} />,
+    h3: (props: any) => <h3 className={`mt-8 scroll-m-20 text-lg ${heading}`} {...props} />,
+    h4: (props: any) => <h4 className={`mt-8 scroll-m-20 text-md ${heading}`} {...props} />,
     p: (props: any) => <p className={`mt-6 ${paragraph}`} {...props} />,
     a: ({ href = '#', children, ...rest }: { href?: string; children: ReactNode }) => (
         <Link href={href} className={link} {...rest as any} target="_blank">
@@ -37,13 +44,33 @@ export const MDXComponents = {
     Image: (props: any) => <Image {...props} className="rounded-md " />,
     Video: (props: any) => <ReactPlayer
         url={props.src}
-        controls={true}
         playing={true}
         width="100%"
         height="auto"
         className="rounded-md"
         {...props}
-    />
+    />,
+    Carousel: ({ imgUrls, ...props }: { imgUrls: string[] }) => (
+        <Carousel className="max-w-full relative">
+            <CarouselContent>
+                {imgUrls.map((imgUrl, index) => (
+                    <CarouselItem key={index}>
+                        <div className="h-full flex justify-center items-center">
+                            <Image
+                                src={imgUrl}
+                                width={1000}
+                                height={1000}
+                                className="max-w-full h-auto rounded-md transition-all duration-300"
+                                alt={`Carousel image ${index + 1}`}
+                            />
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm hover:bg-background/95 transition-all duration-300 shadow-md hover:text-accent hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] md:w-9 md:h-9" />
+            <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 z-20 bg-background/90 backdrop-blur-sm hover:bg-background/95 transition-all duration-300 shadow-md hover:text-accent hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] md:w-9 md:h-9" />
+        </Carousel>
+    )
 };
 
 export type MDXComponentsType = typeof MDXComponents;

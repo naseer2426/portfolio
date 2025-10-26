@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params }: any) {
     const { content, frontmatter } = post;
 
     return (
-        <article className="px-4 py-6 lg:px-10 max-w-5xl mx-auto">
+        <article className="px-8 py-6 lg:px-10 max-w-5xl mx-auto">
             <Breadcrumb className="mb-6">
                 <BreadcrumbList className="text-xs sm:text-sm">
                     <BreadcrumbItem>

@@ -9,20 +9,22 @@ cover: "https://res.cloudinary.com/deiuynufh/image/upload/v1761147914/florian-kr
 As a devloper, I've always hated paying fixed subscription fees for tools I only use occasionally. ChatGPT Pro costs 20 USD/month no matter how much you use it. But LLMs don't really need to work that way - they're built on tokens, not time. So I decided to setup a ChatGPT clone which bills me for the tokens I use.
 
 <Video
-    src={"https://res.cloudinary.com/deiuynufh/video/upload/v1761144143/Demo_k6v96m.mov"}
+    src={"https://res.cloudinary.com/deiuynufh/video/upload/v1761479130/demo_fast_iinmqr.mov"}
     playsInline={true}
+    loop={true}
 />
 
-## The chat application
-For the chat application, I am using [LibreChat](https://www.librechat.ai/), an open source AI conversation app, which supports nice features like MCP, web search, RAG databases & image generation. The LibreChat repository comes with a docker-compose file which you need to host on a server. I could have rented a “cheap” VPS for 5 dollars a month but that's too rich for my taste, so I decided to setup a home server for free ✨
+# The chat application
+For the chat application, I am using [LibreChat](https://www.librechat.ai/), an open source AI conversation app, which supports nice features like MCP servers, web search, RAG databases & image generation. The LibreChat repository comes with a docker-compose file which you need to host on a server. I could have rented a “cheap” VPS for 5 dollars a month but that's too rich for my taste, so I decided to setup a home server, for free ✨
 
-## A delightful side tangent
+# A delightful side tangent
 Inspired by this [fireship video](https://youtu.be/SCIfWhAheVw?si=o7KFrN2vddWXLWzx) I decided to look into [Coolify](https://coolify.io/), an open source alternative to popular tools like Vercel, Netlify & Railway. You can link any repository to a Coolify project and it manages the container orchestration and reverse proxy configurations for you. It also supports push to deploy and automatic SSL certificate management 🎉. 
 
 <Image
-    src="https://res.cloudinary.com/deiuynufh/image/upload/v1761152966/coolify_ayn3no.jpg"
+    src="https://res.cloudinary.com/deiuynufh/image/upload/v1761476291/deployments_ekkvfd.jpg"
     width="1000"
     height="1000"
+    alt={"deployments"}
 />
 
 Having setup such a lovely tool for self hosting all my side projects, I needed a way to monitor the CPU and memory utilization of all my containers. So one thing led to another and I set up prometheus, cadvisor, node exporter & grafana to get real time metrics for container resource usage , I/O operations, disk utilization & even my CPU's temperature.
@@ -31,23 +33,26 @@ Having setup such a lovely tool for self hosting all my side projects, I needed 
     src="https://res.cloudinary.com/deiuynufh/image/upload/v1761151862/prom_jy4tte.png"
     width="1000"
     height="1000"
+    alt={"prometheus"}
 />
 
 - Was this necessary to setup the chatGPT clone? No.
 - Did I have more than one containers to monitor when I set it up? No.
 - Is it the coolest looking thing ever and perhaps my favorite side tangent? YES.
 
-## How the chat application talks to AI
+# How the chat application talks to AI
 LibreChat gives you the ability to configure API tokens for some major model providers like OpenAI, Anthropic, & Google. If you want to run models on your own infra you can also integrate with AWS Bedrock or Azure OpenAI. But all this seemed too tedious to me. The obvious choice was [OpenRouter](https://openrouter.ai/), a service that supports almost every model (including the open source ones) behind an API interface fully compatible with OpenAI's API, which means any tool designed to work with openAI's v1 APIs can work with OpenRouter. 
 
 After I set this up, the rough architecture of my setup looked like this
 
-```
-Pending to add the tldraw component here
-```
+<Image
+    src="https://res.cloudinary.com/deiuynufh/image/upload/v1761478351/chat_architecture_xbsoha.jpg"
+    width="1000"
+    height="1000"
+    alt={"architecture"}
+/>
 
-## Which model to choose?
-
+# Which model to choose?
 Now that I have access to almost every model available, how do I choose which one to use? Ideally I want 
 
 - A smart model that can answer most of my questions
@@ -61,8 +66,9 @@ Another strategy is to divide the models' performance on popular benchmarks with
 The most ideal way to calculate this is what [artificial intelligence](https://artificialanalysis.ai/) does, which is to run a bunch of popular benchmark and track the *price it cost to run the benchmark*. They then create an “intelligence per dollar” using this price.
 
 <Image
-    src="https://res.cloudinary.com/deiuynufh/image/upload/v1761152110/Intelligence_vs_Price_Log_Scale_22_Oct_25_du2shd.png"
+    src="https://res.cloudinary.com/deiuynufh/image/upload/v1761478704/artifical_analysis_ttufts.jpg"
     width="1000"
     height="1000"
+    alt={"analysis"}
 />
 This graph was what I used to decide that as of writing this post, GPT OSS 120B and Grok 4 fast are the most efficient models to use for price.
