@@ -63,7 +63,7 @@ Simply picking the model with the cheapest price per token is not the best becau
 
 Another strategy is to divide the models' performance on popular benchmarks with it's price to calculate an “intelligence per dollar” metric, but how do you calculate the “price”. The official APIs give you 2 things - price per input & output tokens. A non-reasoning model with a higher cost per output token *may be cheaper to run* than a reasoning model with lower cost per output token simply because it produces more output tokens. Later those output tokens are passed as input tokens for the model to “remember” the context of the conversation
 
-The most ideal way to calculate this is what [artificial intelligence](https://artificialanalysis.ai/) does, which is to run a bunch of popular benchmark and track the *price it cost to run the benchmark*. They then create an “intelligence per dollar” using this price.
+The most ideal way to calculate this is what [artificial intelligence](https://artificialanalysis.ai/) does, which is to run a bunch of popular benchmark and track the *price it cost to run the benchmark*. They then create an “intelligence per dollar” graph using this price.
 
 <Image
     src="https://res.cloudinary.com/deiuynufh/image/upload/v1761478704/artifical_analysis_ttufts.jpg"
@@ -71,4 +71,4 @@ The most ideal way to calculate this is what [artificial intelligence](https://a
     height="1000"
     alt={"analysis"}
 />
-This graph was what I used to decide that as of writing this post, GPT OSS 120B and Grok 4 fast are the most efficient models to use for price.
+This graph was what I used to decide that, as of writing this post, GPT OSS 120B and Grok 4 fast are the most efficient models to use for price. This is why my monthly costs are as low as 50 cents.
