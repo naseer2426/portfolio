@@ -45,6 +45,7 @@ export const MDXComponents = {
     Video: (props: any) => <ReactPlayer
         url={props.src}
         playing={true}
+        muted
         width="100%"
         height="auto"
         className="rounded-md"
