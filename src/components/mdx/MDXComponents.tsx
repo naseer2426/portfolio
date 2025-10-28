@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { ReactNode } from 'react';
-import ReactPlayer from 'react-player'
+import { Video } from '@/components/ui/video';
 import {
     Carousel,
     CarouselContent,
@@ -42,15 +42,7 @@ export const MDXComponents = {
         <img loading="lazy" alt="" className="rounded-md border border-border" {...props} />
     ),
     Image: (props: any) => <Image {...props} className="rounded-md " />,
-    Video: (props: any) => <ReactPlayer
-        url={props.src}
-        playing={true}
-        muted
-        width="100%"
-        height="auto"
-        className="rounded-md"
-        {...props}
-    />,
+    Video: (props: any) => <Video {...props} />,
     Carousel: ({ imgUrls, ...props }: { imgUrls: string[] }) => (
         <Carousel className="max-w-full relative">
             <CarouselContent>
