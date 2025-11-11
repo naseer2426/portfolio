@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params }: any) {
     const { content, frontmatter } = post;
 
     return (
-        <article className="px-8 py-6 lg:px-10 max-w-5xl mx-auto">
+        <article className="px-8 py-6 lg:px-48 max-w-5xl mx-auto">
             <Breadcrumb className="mb-6">
                 <BreadcrumbList className="text-xs sm:text-sm">
                     <BreadcrumbItem>
@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: any) {
                 </BreadcrumbList>
             </Breadcrumb>
             <header>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
+                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-tight">
                     {frontmatter.title}
                 </h1>
                 <div className="my-2 h-px w-full bg-gradient-to-r from-accent to-primary" />
@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: any) {
 
             </header>
 
-            <div className="prose prose-invert mt-6 sm:mt-8 max-w-none prose-sm sm:prose-base">
+            <div className="prose prose-invert mt-6 sm:mt-8 max-w-none prose-sm sm:prose-lg">
                 {content}
             </div>
         </article>

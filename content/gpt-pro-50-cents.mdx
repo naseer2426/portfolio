@@ -14,10 +14,10 @@ As a devloper, I've always hated paying fixed subscription fees for tools I only
     loop={true}
 />
 
-# The chat application
+## The chat application
 For the chat application, I am using [LibreChat](https://www.librechat.ai/), an open source AI conversation app, which supports nice features like MCP servers, web search, RAG & image generation. The LibreChat repository comes with a docker-compose file which you need to host on a server. I could have rented a “cheap” VPS for 5 dollars a month but that's too rich for my taste, so I decided to setup a home server, for free ✨
 
-# A delightful side tangent
+## A delightful side tangent
 Inspired by this [fireship video](https://youtu.be/SCIfWhAheVw?si=o7KFrN2vddWXLWzx) I decided to look into [Coolify](https://coolify.io/), an open source alternative to popular tools like Vercel, Netlify & Railway. You can link any repository to a Coolify project and it manages the container orchestration and reverse proxy configurations for you. It also supports push to deploy and automatic SSL certificate management 🎉. 
 
 <Image
@@ -40,7 +40,7 @@ Having setup such a lovely tool for self hosting all my side projects, I needed 
 - Did I have more than one containers to monitor when I set it up? No.
 - Is it the coolest looking thing ever and perhaps my favorite side tangent? YES.
 
-# How the chat application talks to AI
+## How the chat application talks to AI
 LibreChat gives you the ability to configure API tokens for some major model providers like OpenAI, Anthropic, & Google. If you want to run models on your own infra you can also integrate with AWS Bedrock or Azure OpenAI. But all this seemed too tedious to me. The obvious choice was [OpenRouter](https://openrouter.ai/), a service that supports almost every model (including the open source ones) behind an API interface fully compatible with OpenAI's API, which means any tool designed to work with openAI's v1 APIs can work with OpenRouter. 
 
 After I set this up, the rough architecture of my setup looked like this
@@ -52,7 +52,7 @@ After I set this up, the rough architecture of my setup looked like this
     alt={"architecture"}
 />
 
-# Which model to choose?
+## Which model to choose?
 Now that I have access to almost every model available, how do I choose which one to use? Ideally I want 
 
 - A smart model that can answer most of my questions

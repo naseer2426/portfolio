@@ -19,7 +19,7 @@ export default async function BlogIndexPage() {
     const posts = getAllPostsMeta();
 
     return (
-        <div className="px-4 sm:px-6 lg:px-8 py-4 max-w-6xl mx-auto">
+        <div className="px-4 sm:px-8 py-4 max-w-6xl mx-auto">
             <Breadcrumb className="mb-6">
                 <BreadcrumbList className="text-xs sm:text-sm">
                     <BreadcrumbItem>

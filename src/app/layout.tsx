@@ -4,15 +4,8 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  weight: ["500", "600", "700"],
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const nunito = Nunito({
-  weight: ["500", "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-nunito",
   display: "swap",
   subsets: ["latin"],
@@ -31,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${nunito.variable} antialiased`}
+        className={`${nunito.variable}`}
       >
         {children}
         <Analytics />
