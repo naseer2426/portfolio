@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: any) {
 
             </header>
 
-            <div className="prose prose-invert mt-6 sm:mt-8 max-w-none prose-sm sm:prose-lg">
+            <div className="prose prose-invert mt-6 sm:mt-8 max-w-none">
                 {content}
             </div>
         </article>
