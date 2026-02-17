@@ -34,7 +34,11 @@ export async function fetchPlaylistVideos(): Promise<string[]> {
         );
         
         if (!response.ok) {
-            throw new Error('Failed to fetch playlist items');
+            const errorBody = await response.json().catch(() => ({}));
+            const message =
+                (errorBody as { error?: { message?: string; errors?: unknown[] } })?.error?.message ??
+                `HTTP ${response.status}`;
+            throw new Error(`Failed to fetch playlist items: ${response.status}: ${message}`);
         }
 
         const data: YouTubePlaylistResponse = await response.json();
